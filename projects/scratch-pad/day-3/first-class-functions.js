@@ -10,11 +10,15 @@
  * Given an input base to test against, which could be a String or Number, 
  * return a Function that tests whether a given value is greater than the 
  * base.
+ * 
+ * test => returns true or false
  */
-function createGreaterThanFilter(base) {
+function createGreaterThanFilter(base) { // higher order function => returns a function
     // YOUR CODE BELOW HERE //
     
-    
+    return function (val){
+        return val > base;
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -25,7 +29,7 @@ function createGreaterThanFilter(base) {
  * return a Function that tests whether a given value is less than the 
  * base.
  */
-function createLessThanFilter(base) {
+function createLessThanFilter(base) { // higher order functions => return a function
     // YOUR CODE BELOW HERE //
     
     
@@ -69,7 +73,7 @@ function createEndsWithFilter(endsWith) {
  * TIP: You need to loop over the Strings, right? We need to pass each String to 
  * the modify Function, but we need to collect the results into some collection.
  */
-function modifyStrings(strings, modify) {
+function modifyStrings(strings, modify) { // modify is a function // HIGHER ORDER FUNCTIONS => take in a function
     // YOUR CODE BELOW HERE //
     
     
@@ -77,6 +81,14 @@ function modifyStrings(strings, modify) {
     
     // YOUR CODE ABOVE HERE //
 }
+
+modifyStrings(['a', 'b', 'c'], function(string){
+    return string.toUpperCase();
+}); // ['A', 'B', 'C'];
+
+modifyStrings(['a', 'b', 'c'], function(string){
+    return string + '!';
+}); // ['a!', 'b!', 'c!']
 
 /** 
  * Given an Array of Strings and a Function designed to test the String in some 
@@ -87,7 +99,7 @@ function modifyStrings(strings, modify) {
  * 
  * TIP: You need to loop over the Strings, right? And pass them to the test?
  */
-function allStringsPass(strings, test) {
+function allStringsPass(strings, test) { // test is a function that will return true or false
     // YOUR CODE BELOW HERE //
     
     
@@ -95,6 +107,10 @@ function allStringsPass(strings, test) {
     
     // YOUR CODE ABOVE HERE //
 }
+
+allStringsPass(['alex', 'francis', 'aaron'], function(string){
+    return string[0] === 'a';
+}); // false (all of the strings DON'T begin with 'a')
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&
